@@ -1,18 +1,32 @@
-import csv
-from tools.scraper import getCardList, getCardNews
+"""Bitdaan Dataset Preparation.
+
+For dataset preparation, pass args like this:
+    bitdaan --collect dataset --start-page 1 --end-page 2407
+
+For just collect latest news which are not in dataset and did not analyze by bitdaan, pass args like this:
+    bitdaan --collect latest
+
+Usage:
+    bitdaan [--collect=TYPE] [--start-page=NUMBER] [--end-page=NUMBER]
+    
+"""
+
+import docopt
+from collectors.news import createDataset
 
 
-newsList = []
+def main():
+    args = docopt.docopt(__doc__)
+    if args['--collect'] == "dataset":
+        if args['--start-page'] != None and args['--end-page'] != None:
+            createDataset(int(args['--start-page']), int(args['--end-page']))
+        else:
+            exit('Error !\n\trun " bitdaan -h " for more help.')
+    elif args['--collect'] == "latest":
+        print("latest")
+    else:
+        exit('Error !\n\trun " bitdaan -h " for more help.')
 
-startPage = 1
-endPage = 2 #since i've written this code, news.bitcoin.com has 2407 pages. So, if U wanna scrap all that change this to 2407 :)
 
-for i in range(startPage, endPage):
-    cardList = getCardList("https://news.bitcoin.com/page/" + str(i) + "/?s")
-    for card in cardList:
-        newsList.append(getCardNews(card))
-
-
-with open("data-set.csv", "w+") as stream:
-    writer = csv.writer(stream)
-    writer.writerows(newsList)
+if __name__ == '__main__':
+    main()

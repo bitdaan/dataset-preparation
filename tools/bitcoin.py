@@ -9,9 +9,9 @@ def getBitcoinPrice(moment):
     start = datetime.fromisoformat(moment).timestamp() * 1000
     end = (datetime.fromisoformat(moment) +
            timedelta(hours=24)).timestamp() * 1000
-    response = requests.get("https://api.coincap.io/v2/assets/bitcoin/history?interval=h1&start=" +
-                            str(start) + "&end=" + str(end), headers=headers)
-    prices = response.json()["data"]
+    response=requests.get("https://api.coincap.io/v2/assets/bitcoin/history?interval=h1&start=" +
+                            str(start) + "&end=" + str(end), headers = headers)
+    prices=response.json()["data"]
     if(len(prices) < 24):
-        prices = prices + [{"priceUsd": -1}]*(24-len(prices))
+        prices=prices + [{"priceUsd": -1}]*(24-len(prices))
     return prices

@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from classes.news import News
 
 headers = {
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
+    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'}
 
 
 def getNewsContent(link):
@@ -25,4 +25,5 @@ def getCardNews(opt):
     link = opt.find(
         'h3', class_="entry-title td-module-title").find('a').get('href')
     publishedAt = opt.find('time').get('datetime')
+    print("\t", publishedAt)
     return News(title, cat, getNewsContent(link), publishedAt)
