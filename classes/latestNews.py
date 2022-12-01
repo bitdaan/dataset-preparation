@@ -1,6 +1,3 @@
-from tools.bitcoin import getBitcoinPrice
-
-
 class LatestNews:
     def __init__(self, title, cat, content, publishedAt):
         self.title = title
