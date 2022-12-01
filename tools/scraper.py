@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from classes.news import News
+from classes.latestNews import LatestNews
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'}
@@ -27,3 +28,13 @@ def getCardNews(opt):
     publishedAt = opt.find('time').get('datetime')
     print("\t", publishedAt)
     return News(title, cat, getNewsContent(link), publishedAt)
+
+
+def getCardLatestNews(opt):
+    title = opt.find('h3', class_="entry-title td-module-title").text
+    cat = opt.find('a', class_="td-post-category").text
+    link = opt.find(
+        'h3', class_="entry-title td-module-title").find('a').get('href')
+    publishedAt = opt.find('time').get('datetime')
+    print("\t", publishedAt)
+    return LatestNews(title, cat, getNewsContent(link), publishedAt)

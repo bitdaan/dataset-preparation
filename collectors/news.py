@@ -1,4 +1,5 @@
 import csv
+from datetime import datetime
 from tools.scraper import getCardList, getCardNews
 from classes.cache import *
 
@@ -16,7 +17,9 @@ def createDataset(startPage, endPage):
     for card in cardList:
         newsList.append(getCardNews(card))
 
-    if load_peak_flag() == None or (load_peak_flag().unixTime < newsList[0].publishedAt):
+    peak = load_peak_flag()
+
+    if peak == None or (datetime.fromisoformat(peak.unixTime).timestamp() < datetime.fromisoformat(newsList[0].publishedAt).timestamp()):
         save_peak_flag(PeakFlag(newsList[0].publishedAt))
 
     with open("data-set.csv", "w+") as stream:
