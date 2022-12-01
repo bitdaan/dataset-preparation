@@ -12,7 +12,7 @@ Usage:
 """
 
 import docopt
-from collectors.news import createDataset
+from collectors.news import *
 
 
 def main():
@@ -22,6 +22,8 @@ def main():
             createDataset(int(args['--start-page']), int(args['--end-page']))
         else:
             exit('Error !\n\trun " bitdaan -h " for more help.')
+    elif args['--collect'] == "continue":
+        continueCreateDataset()
     elif args['--collect'] == "latest":
         print("latest")
     else:
