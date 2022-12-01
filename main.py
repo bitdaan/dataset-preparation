@@ -1,13 +1,13 @@
 """Bitdaan Dataset Preparation.
 
 For dataset preparation, pass args like this:
-    bitdaan --collect dataset --start-page 1 --end-page 2407
+    python main --collect dataset --start-page 1 --end-page 2407
 
 For continue dataset preparation, pass args like this:
-    bitdaan --collect continue
+    python main --collect continue
 
 For just collect latest news which are not in dataset and did not analyze by bitdaan, pass args like this:
-    bitdaan --collect latest
+    python main --collect latest
 
 Usage:
     bitdaan [--collect=TYPE] [--start-page=NUMBER] [--end-page=NUMBER]
