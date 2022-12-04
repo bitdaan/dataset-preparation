@@ -34,7 +34,7 @@ def exit_handler():
             writer = csv.writer(stream)
             writer.writerows(newsList)
     elif len(latestNewsList) > 0:
-        with open(path + "/latest-news.csv", "a") as stream:
+        with open(path + "/latest-news.csv", "w+") as stream:
             writer = csv.writer(stream)
             writer.writerows(latestNewsList)
 

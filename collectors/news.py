@@ -17,7 +17,7 @@ def createDataset(startPage, endPage, newsList, path):
 
     peak = load_peak_flag()
 
-    if peak == None or (datetime.fromisoformat(peak.unixTime).timestamp() < datetime.fromisoformat(newsList[0].publishedAt).timestamp()):
+    if len(newsList) > 0 and (peak == None or (datetime.fromisoformat(peak.unixTime).timestamp() < datetime.fromisoformat(newsList[0].publishedAt).timestamp())):
         save_peak_flag(PeakFlag(newsList[0].publishedAt))
 
 
