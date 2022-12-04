@@ -2,9 +2,10 @@ import pickle
 
 
 class ContinueDate():
-    def __init__(self, startPage, endPage):
+    def __init__(self, startPage, endPage, path):
         self.startPage = startPage
         self.endPage = endPage
+        self.path = path
 
 
 def save_continue_date(obj):
