@@ -11,7 +11,7 @@ def getNewsContent(link):
     page = requests.get(link, headers=headers)
     text = ""
     for p in BeautifulSoup(page.content, 'html.parser').find('article', class_='article__body').find_all('p'):
-        text = text + " " + p.text
+        text = text + "^*^" + str(p)
     return text
 
 
