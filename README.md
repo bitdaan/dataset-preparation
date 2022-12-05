@@ -9,7 +9,7 @@ After clone this repo
 
 For dataset preparation
 
-  `python main.py --collect dataset --start-page [Number] --end-page [Number]` 
+  `python main.py --collect dataset --start-page [Number] --end-page [Number] --path [PATH]` 
 
 For continue dataset preparation,
 
@@ -17,4 +17,4 @@ For continue dataset preparation,
 
 For just collect latest news which are not in dataset and did not analyze by bitdaan
   
-  `python main.py --collect latest`
+  `python main.py --collect latest --path [PATH]`
